@@ -1,0 +1,11 @@
+---
+- name: 'Save config to ~/backup'
+  connection: network_cli
+  gather_facts: false
+  hosts: Mogilev_test
+  tasks:
+    - name: backup
+      ios_config:
+        backup: yes
+        backup_options:
+          dir_path: /home/vadim/Ansible_books/backup/
