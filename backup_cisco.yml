@@ -4,8 +4,13 @@
   gather_facts: false
   hosts: Mogilev_test
   tasks:
+    - name: 'Get ansible date/time facts'
+      ansible.builtin.setup:
+        filter: ansible_date_time
+        gather_subset: '!all'
+        
     - name: backup
       ios_config:
         backup: yes
         backup_options:
-          dir_path: /home/vadim/Ansible_books/backup/
+          dir_path: /home/vadim/Ansible_books/backup/{{ ansible_date_time.date }}
