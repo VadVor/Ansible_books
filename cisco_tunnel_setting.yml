@@ -5,7 +5,7 @@
     
   tasks:
 
-  - name: Retrieve the current L3 interface configuration
+   - name: Retrieve the current L3 interface configuration
      cisco.ios.ios_l3_interfaces:
        state: gathered
      register: current_l3
