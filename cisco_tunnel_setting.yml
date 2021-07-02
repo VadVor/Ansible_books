@@ -1,0 +1,19 @@
+- name: "Change tunnels setting's"
+  hosts: Mogilev_routers
+  gather_facts: no
+  ignore_errors: false
+    
+  tasks:
+
+  - name: Retrieve the current L3 interface configuration
+     cisco.ios.ios_l3_interfaces:
+       state: gathered
+     register: current_l3
+
+   - name: Store facts to host_vars
+     cisco.ios.ios_config:
+       lines:
+        - cdp enable
+       parents: interface {{ current_l3.gathered[item].name }}
+     
+     loop: "{{ lookup('ansible.utils.index_of', current_l3.gathered, 'regex', '^Tunnel7*', 'name', wantlist=True) }} "
