@@ -1,5 +1,5 @@
 - name: "Changed tunnels setting's"
-  hosts: Gomel_routers
+  hosts: Brest_routers
   gather_facts: no
   ignore_errors: false
     
@@ -18,4 +18,6 @@
      
 #     loop: "{{ lookup('ansible.utils.index_of', current_l3.gathered, 'regex', '^Tunnel7[012][0-9]$', 'name', wantlist=True) }} "  #Могилевская область
 #     loop: "{{ lookup('ansible.utils.index_of', current_l3.gathered, 'regex', '^Tunnel[45]$', 'name', wantlist=True) }} "  #Витебская область
-     loop: "{{ lookup('ansible.utils.index_of', current_l3.gathered, 'regex', '^Tunnel30024[0-9]$', 'name', wantlist=True) }} "  #Гомельская область
+#     loop: "{{ lookup('ansible.utils.index_of', current_l3.gathered, 'regex', '^Tunnel30024[0-9]$', 'name', wantlist=True) }} "  #Гомельская область
+#     loop: "{{ lookup('ansible.utils.index_of', current_l3.gathered, 'regex', '^Tunnel4[0]{0,1}$', 'name', wantlist=True) }} "  #Гродненская область
+     loop: "{{ lookup('ansible.utils.index_of', current_l3.gathered, 'regex', '^Tunnel1[01]$', 'name', wantlist=True) }} "  #Брестская область
