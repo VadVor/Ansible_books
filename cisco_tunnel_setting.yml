@@ -1,5 +1,5 @@
 - name: "Changed tunnels setting's"
-  hosts: Mogilev_routers
+  hosts: Gomel_routers
   gather_facts: no
   ignore_errors: false
     
@@ -16,4 +16,6 @@
         - cdp enable
        parents: interface {{ current_l3.gathered[item].name }}
      
-     loop: "{{ lookup('ansible.utils.index_of', current_l3.gathered, 'regex', '^Tunnel7[012][0-9]$', 'name', wantlist=True) }} "
+#     loop: "{{ lookup('ansible.utils.index_of', current_l3.gathered, 'regex', '^Tunnel7[012][0-9]$', 'name', wantlist=True) }} "  #Могилевская область
+#     loop: "{{ lookup('ansible.utils.index_of', current_l3.gathered, 'regex', '^Tunnel[45]$', 'name', wantlist=True) }} "  #Витебская область
+     loop: "{{ lookup('ansible.utils.index_of', current_l3.gathered, 'regex', '^Tunnel30024[0-9]$', 'name', wantlist=True) }} "  #Гомельская область
