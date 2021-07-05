@@ -1,0 +1,31 @@
+---
+- hosts: localhost
+  
+  tasks:
+    - name: 'Get ansible date/time facts'
+      ansible.builtin.setup:
+        filter: ansible_date_time
+        gather_subset: '!all'
+
+    - name: Create Directory
+      file:
+        path: /home/vadim/Ansible_books/backup/{{ hostvars.localhost.ansible_date_time.date }}
+        owner: vadim
+        state: directory
+  run_once: true
+
+- hosts: Mogilev_test
+  gather_facts: false
+  vars:
+    command_list:
+      - show ip int brief | i Tunnel
+  tasks:
+    - name: Run the SHOW commands and save output
+      cisco.ios.ios_command:
+        commands: "{{ command_list }}"
+      register: showoutput
+
+    - name: "Put all into one file"
+      template:
+        src: show_cmd_tmpl.j2
+        dest: '/home/vadim/Ansible_books/backup/{{ hostvars.localhost.ansible_date_time.date }}/{{ inventory_hostname }}.txt'
