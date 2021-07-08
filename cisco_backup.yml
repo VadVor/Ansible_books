@@ -2,7 +2,7 @@
 - name: 'Save config to ~/backup'
   connection: network_cli
   gather_facts: false
-  hosts: Mogilev_test
+  hosts: "{{ routers }}"
   tasks:
     - name: 'Get ansible date/time facts'
       ansible.builtin.setup:
