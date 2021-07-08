@@ -13,4 +13,4 @@
       ios_config:
         backup: yes
         backup_options:
-          dir_path: /home/vadim/Ansible_books/backup/{{ ansible_date_time.date }}
+          dir_path: ~/Ansible_books/backup/{{ ansible_date_time.date }}
