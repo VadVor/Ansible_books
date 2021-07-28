@@ -18,11 +18,12 @@
   gather_facts: false
   vars:
     command_list:
-      - show run | i ntp server
-      - show run | i clock time
-      - show run | i Null0
-      - show run | i logging buffered
-      - show run | i no ip http
+#      - show run | i ntp server
+#      - show run | i clock time
+#      - show run | i Null0
+#      - show run | i logging buffered
+#      - show run | i no ip http
+      - show run | i vtp
   tasks:
     - name: Run the SHOW commands and save output
       cisco.ios.ios_command:
