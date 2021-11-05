@@ -23,7 +23,8 @@
 #      - show run | i Null0
 #      - show run | i logging buffered
 #      - show run | i no ip http
-      - show run | i vtp
+#      - show run | i vtp
+      - sh run | i encapsulation dot1Q 700
   tasks:
     - name: Run the SHOW commands and save output
       cisco.ios.ios_command:
